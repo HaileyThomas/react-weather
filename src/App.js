@@ -18,7 +18,9 @@ function App() {
         <div className="side-container">
           <Saved />
         </div>
-        <div className="main-container"></div>
+        <div className="main-container">
+          
+        </div>
       </div>
       <Footer />
     </div>
