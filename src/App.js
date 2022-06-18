@@ -14,11 +14,11 @@ function App() {
       <Header />
       <div className="app-container">
         <div className="side-container">
-          <Saved />
+          <Saved city={city} setCity={setCity} />
         </div>
         <div className="main-container">
           <Search city={city} setCity={setCity} />
-          <Results />
+          <Results city={city} setCity={setCity} />
         </div>
       </div>
       <Footer />

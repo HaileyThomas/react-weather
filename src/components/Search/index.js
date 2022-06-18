@@ -4,7 +4,7 @@ const Search = (props) => {
   const [input, setInput] = useState("");
   const handleSubmit = (event) => {
     event.preventDefault();
-    // props.setCity(set city will go here);
+    props.setCity(input);
   };
 
   return (
