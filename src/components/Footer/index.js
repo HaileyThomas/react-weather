@@ -7,7 +7,7 @@ const Footer = () => {
   return (
     <div className="footer-container">
       <Icon icon="akar-icons:heart" className="heart-icon" />
-      <p>&copy; Hailey Thomas ({currentYear}).</p>
+      <p>Hailey Thomas ({currentYear})</p>
       <a
         href="https://github.com/HaileyThomas/react-weather"
         target="blank"

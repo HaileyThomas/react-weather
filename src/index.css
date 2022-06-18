@@ -1,13 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&family=Roboto+Mono:wght@300;400&display=swap');
+
+:root {
+  --background: #C2C3C3;
+  --black: #000000;
+  --maincolor: #FFFFFF;
+  --contrastcolor: #000000;
+  --colorone: #0E689B;
+  --colortwo: #1397E2;
+}
+
+[data-theme='dark'] {
+  --background: #2C2D2D;
+  --black: #000000;
+  --maincolor: #000000;
+  --contrastcolor: #FFFFFF;
+  --colorone: #1397E2;
+  --colortwo: #0E689B;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  padding: 0;
+  background-color: var(--background);
+  font-family: 'Roboto Mono', monospace;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color: var(--contrastcolor);
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+a {
+  color: var(--colorone);
+}
+
+a:hover {
+  color: var(--colortwo);
+}
+
+h1 {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 35px;
+}
+
+h2 {
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+h3 {
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+.icon {
+  font-size: 25px;
+  padding: 5px;
+}
+
+.icon:hover {
+  color: var(--colorone);
+}
+
+.header-container {
+  background-color: white;
+  position: sticky;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+}
+
+.app-container {
+  margin: 20px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.side-container {
+  width: 25%;
+  background-color: var(--maincolor);
+  border-radius: 10px;
+  padding: 15px;
+}
+
+.main-container {
+  width: 60%;
+}
+
+
+.footer-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--maincolor);
+  padding: 10px;
 }
