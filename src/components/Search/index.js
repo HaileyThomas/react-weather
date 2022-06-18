@@ -1,6 +1,13 @@
-import React from "react";
+import { React, useState } from "react";
 
-const Search = () => {
+const Search = (props) => {
+  const [input, setInput] = useState("");
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    props.setSearch(true);
+  };
+
   return (
     <div className="search-container">
       <form>
@@ -8,7 +15,9 @@ const Search = () => {
           type="text"
           id="search-input"
           name="search-input"
-          value="Search a City Location..."
+          placeholder="Search a City Location..."
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
         />
         <input type="submit" id="search-submit" value="Search" />
       </form>
