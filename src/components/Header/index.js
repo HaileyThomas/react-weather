@@ -1,7 +1,12 @@
 import React from "react";
 import { Icon } from "@iconify/react";
 
-const Header = () => {
+const Header = ({ theme, setTheme }) => {
+  const switchTheme = () => {
+    const newTheme = theme === "light" ? "dark" : "light";
+    setTheme(newTheme);
+  };
+
   return (
     <div className="header-container">
       <div className="header-left">
@@ -9,8 +14,13 @@ const Header = () => {
         <h1 className="main-header">Weather Dashboard</h1>
       </div>
       <div className="header-right">
-        <Icon icon="charm:sun" className="light-icon icon" />
-        <Icon icon="charm:moon" className="dark-icon icon" />
+        <button onClick={switchTheme} className="theme-btn">
+          {theme === "light" ? (
+            <Icon icon="charm:moon" className="dark-icon icon" />
+          ) : (
+            <Icon icon="charm:sun" className="light-icon icon" />
+          )}
+        </button>
         <Icon icon="dashicons:info-outline" className="about-icon icon" />
       </div>
     </div>
