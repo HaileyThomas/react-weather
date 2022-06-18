@@ -109,6 +109,23 @@ h3 {
   width: 60%;
 }
 
+input {
+  padding: 15px;
+  margin: 5px;
+  font-family: 'Roboto Mono', monospace;
+  background-color: var(--maincolor);
+  color: var(--contrastcolor);
+  border: none;
+  border-radius: 10px;
+}
+
+#search-input {
+  width: 70%;
+}
+
+#search-submit:hover {
+  background-color: var(--colorone);
+}
 
 .footer-container {
   display: flex;
