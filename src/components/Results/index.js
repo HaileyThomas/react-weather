@@ -1,9 +1,15 @@
 import React, { useState, useEffect } from "react";
 
+import Main from "../Main";
+import Forecast from "../Forecast";
+import Details from "../Details";
+
 const Results = (props) => {
   return (
     <div className="results-container">
-      <div>results will go here</div>
+      <Main />
+      <Forecast />
+      <Details />
     </div>
   );
 };
