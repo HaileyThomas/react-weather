@@ -8,7 +8,7 @@ import Search from "./components/Search";
 import Results from "./components/Results";
 
 function App() {
-  const [city, setCity] = useState("");
+  const [city, setCity] = useState("New York");
   const defaultDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
   const [theme, setTheme] = useLocalStorage(
     "theme",
