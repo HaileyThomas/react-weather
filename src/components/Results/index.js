@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
-const Results = () => {
+const Results = (props) => {
   return (
     <div className="results-container">
       <div>results will go here</div>

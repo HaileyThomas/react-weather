@@ -4,11 +4,10 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Saved from "./components/Saved";
 import Search from "./components/Search";
-import Welcome from "./components/Welcome";
 import Results from "./components/Results";
 
 function App() {
-  const [search, setSearch] = useState(false);
+  const [city, setCity] = useState("");
 
   return (
     <div className="App">
@@ -18,8 +17,8 @@ function App() {
           <Saved />
         </div>
         <div className="main-container">
-          <Search setSearch={setSearch} />
-          {search ? <Welcome /> : <Results />}
+          <Search city={city} setCity={setCity} />
+          <Results />
         </div>
       </div>
       <Footer />
