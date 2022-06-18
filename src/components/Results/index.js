@@ -4,7 +4,7 @@ import Main from "../Main";
 import Forecast from "../Forecast";
 import Details from "../Details";
 
-const Results = (props) => {
+const Results = ({ city, setCity }) => {
   return (
     <div className="results-container">
       <Main />
