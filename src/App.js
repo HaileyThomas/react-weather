@@ -9,6 +9,7 @@ import Results from "./components/Results";
 
 function App() {
   const [city, setCity] = useState("New York");
+  const [cityImgWide, setCityImgWide] = useState("");
   const defaultDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
   const [theme, setTheme] = useLocalStorage(
     "theme",
@@ -20,11 +21,15 @@ function App() {
       <Header theme={theme} setTheme={setTheme} />
       <div className="app-container">
         <div className="side-container">
-          <Saved city={city} setCity={setCity} />
+          <Saved city={city} setCity={setCity} cityImgWide={cityImgWide} />
         </div>
         <div className="main-container">
           <Search city={city} setCity={setCity} />
-          <Results city={city} setCity={setCity} />
+          <Results
+            city={city}
+            cityImgWide={cityImgWide}
+            setCityImgWide={setCityImgWide}
+          />
         </div>
       </div>
       <Footer />

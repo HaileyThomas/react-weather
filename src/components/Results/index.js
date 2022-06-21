@@ -1,15 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 
 import Main from "../Main";
 import Forecast from "../Forecast";
 import Details from "../Details";
 
-const Results = ({ city, setCity }) => {
+const Results = ({ city, cityImgWide, setCityImgWide }) => {
   var weatherData;
-  var cityInfo;
-  var cityData;
-  var cityImageWeb;
-  var cityImageMobile;
+  var cityImage;
 
   var str = city;
   str = str.replace(/\s+/g, "-").toLowerCase();
@@ -52,20 +49,17 @@ const Results = ({ city, setCity }) => {
         "d50140606331b5f0875df8b66c236b78";
       getWeather(weatherApiUrl).then((data) => {
         weatherData = data;
-        console.log("weather data :", weatherData);
       });
     });
     getCityImage().then((data) => {
-      cityImageWeb = data.photos[0].image.web;
-      cityImageMobile = data.photos[0].image.mobile;
-      console.log("web image:" + cityImageWeb);
-      console.log("mobile image:" + cityImageMobile);
+      setCityImgWide(data.photos[0].image.web);
+      cityImage = data.photos[0].image.mobile;
     });
   }, []);
 
   return (
     <div className="results-container">
-      <Main weatherData={weatherData} />
+      <Main weatherData={weatherData} cityImage={cityImage} />
       <Forecast weatherData={weatherData} />
       <Details weatherData={weatherData} />
     </div>
