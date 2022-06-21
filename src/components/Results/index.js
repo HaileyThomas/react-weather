@@ -1,15 +1,19 @@
-import React, { useEffect } from "react";
-
-import Main from "../Main";
-import Forecast from "../Forecast";
-import Details from "../Details";
+import React, { useEffect, useState } from "react";
+import { Icon } from "@iconify/react";
 
 const Results = ({ city, cityImgWide, setCityImgWide }) => {
+  const [newData, setNewData] = useState({});
   var weatherData;
   var cityImage;
 
   var str = city;
   str = str.replace(/\s+/g, "-").toLowerCase();
+
+  var cityName = city
+    .toLowerCase()
+    .split(" ")
+    .map((s) => s.charAt(0).toUpperCase() + s.substring(1))
+    .join(" ");
 
   const cityLocationUrl =
     "http://api.openweathermap.org/geo/1.0/direct?q=" +
@@ -29,7 +33,7 @@ const Results = ({ city, cityImgWide, setCityImgWide }) => {
   };
 
   const getWeather = (weatherApiUrl) => {
-    return fetch(weatherApiUrl).then((response) => response.json());
+    await fetch(weatherApiUrl).then((response) => response.json());
   };
 
   useEffect(() => {
@@ -49,6 +53,8 @@ const Results = ({ city, cityImgWide, setCityImgWide }) => {
         "d50140606331b5f0875df8b66c236b78";
       getWeather(weatherApiUrl).then((data) => {
         weatherData = data;
+        console.log(weatherData);
+        setNewData(data);
       });
     });
     getCityImage().then((data) => {
@@ -59,9 +65,36 @@ const Results = ({ city, cityImgWide, setCityImgWide }) => {
 
   return (
     <div className="results-container">
-      <Main weatherData={weatherData} cityImage={cityImage} />
-      <Forecast weatherData={weatherData} />
-      <Details weatherData={weatherData} />
+      <div className="main-results-container">
+        <div className="main-header-container">
+          <div className="main-header-left">
+            <h2>{cityName}</h2>
+          </div>
+          <div className="main-header-right">
+            <Icon icon="akar-icons:star" className="icon default-icon" />
+            <Icon icon="bi:bookmark-heart" className="icon save-icon" />
+          </div>
+        </div>
+        <div className="main-content-container">
+          <div className="main-content-left">
+            <img src={require("../../assets/icons/" + newData.current.weather[0].icon + ".png")} />
+            <h1>{newData.current.temp} °F</h1>
+            <p>{newData.current.weather[0].description}</p>
+          </div>
+          <div className="main-content-right">
+            <p>Feels Like: {newData.current.feels_like} °F</p>
+            <p>Humidity: {newData.current.humidity}</p>
+            <p>Clouds: {newData.current.clouds}</p>
+            <p>Dew Point: {newData.current.dew_point}</p>
+            <p>Wind Speed: {newData.current.wind_speed}</p>
+            <p>UVI: {newData.current.uvi}</p>
+          </div>
+        </div>
+      </div>
+      <div className="forecast-results-container">
+        forecast results will go here
+      </div>
+      <div className="details-results-container">details will go here</div>
     </div>
   );
 };
