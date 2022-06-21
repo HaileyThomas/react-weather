@@ -5,7 +5,7 @@ import Forecast from "../Forecast";
 import Details from "../Details";
 
 const Results = ({ city, setCity }) => {
-  const [weatherData, setWeatherData] = useState([]);
+  var weatherData;
   var cityInfo;
   var cityData;
   var cityImageWeb;
@@ -45,21 +45,15 @@ const Results = ({ city, setCity }) => {
         "&lon=" +
         longitude +
         "&exclude=" +
-        "hourly,minutely" +
+        "minutely" +
         "&units=" +
         "imperial" +
         "&appid=" +
         "d50140606331b5f0875df8b66c236b78";
-      fetch(weatherApiUrl)
-        // get and parse response
-        .then(function (response) {
-          return response.json();
-        })
-        .then(function (data) {
-          console.log(data);
-          setWeatherData(data);
-          console.log(weatherData);
-        });
+      getWeather(weatherApiUrl).then((data) => {
+        weatherData = data;
+        console.log("weather data :", weatherData);
+      });
     });
     getCityImage().then((data) => {
       cityImageWeb = data.photos[0].image.web;
