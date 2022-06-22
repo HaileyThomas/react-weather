@@ -1,17 +1,41 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Icon } from "@iconify/react";
 import moment from "moment";
 
 const Results = ({ weatherData, city }) => {
+  const [image, setImage] = useState("");
+
   var cityName = city
     .toLowerCase()
     .split(" ")
     .map((s) => s.charAt(0).toUpperCase() + s.substring(1))
     .join(" ");
 
+  var str = city;
+    str = str.replace(/\s+/g, "-").toLowerCase();
+
+  const cityImageUrl =
+    "https://api.teleport.org/api/urban_areas/slug:" + str + "/images/";
+
+  var mainDivStyle = {
+    backgroundImage: "url(" + image + ")"
+  }
+
+  useEffect(() => {
+    const fetchImage = async () => {
+      await fetch(cityImageUrl)
+        .then((res) => res.json())
+        .then((result) => {
+          setImage(result.photos[0].image.web);
+          console.log(image);
+        });
+    };
+    fetchImage();
+  }, [image]);
+
   return (
     <div className="results-container">
-      <div className="main-results-container">
+      <div style={mainDivStyle} className="main-results-container">
         <div className="main-header-container">
           <div className="main-header-left">
             <h2>{cityName}</h2>

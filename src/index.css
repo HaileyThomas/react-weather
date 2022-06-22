@@ -136,6 +136,8 @@ input {
   background-color: var(--maincolor);
   padding: 10px;
   border-radius: 10px;
+  background: center;
+  color: var(--black);
 }
 
 .main-header-container {

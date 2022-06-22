@@ -65,7 +65,7 @@ function App() {
           <Saved />
         </div>
         <div className="main-container">
-          <Search />
+          <Search city={city} setCity={setCity} />
           {typeof data.current != "undefined" ? (
             <Results weatherData={data} city={city} />
           ) : (
