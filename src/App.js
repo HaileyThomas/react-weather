@@ -8,9 +8,21 @@ import Search from "./components/Search";
 import Results from "./components/Results";
 
 function App() {
+  const [city, setCity] = useState("New York");
   const [lat, setLat] = useState([]);
   const [long, setLong] = useState([]);
   const [data, setData] = useState([]);
+
+  const cityApiUrl =
+    "http://api.openweathermap.org/geo/1.0/direct?q=" +
+    city +
+    "&limit=1&appid=" +
+    "6ff484b66ed5b4a802761c069566a64c";
+
+  const getCityLocation = async () => {
+    const response = await fetch(cityApiUrl);
+    return await response.json();
+  };
   const weatherApiUrl =
     "https://api.openweathermap.org/data/2.5/onecall?lat=" +
     lat +
@@ -31,9 +43,9 @@ function App() {
 
   useEffect(() => {
     const fetchData = async () => {
-      navigator.geolocation.getCurrentPosition(function (position) {
-        setLat(position.coords.latitude);
-        setLong(position.coords.longitude);
+      getCityLocation().then((cityData) => {
+        setLat(cityData[0].lat);
+        setLong(cityData[0].lon);
       });
       await fetch(weatherApiUrl)
         .then((res) => res.json())
@@ -55,7 +67,7 @@ function App() {
         <div className="main-container">
           <Search />
           {typeof data.current != "undefined" ? (
-            <Results weatherData={data} />
+            <Results weatherData={data} city={city} />
           ) : (
             <div></div>
           )}

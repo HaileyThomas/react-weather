@@ -146,7 +146,7 @@ input {
 
 .main-content-container {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
 }
 
@@ -155,12 +155,14 @@ input {
   background: rgba(255, 255, 255, 0.5);
   padding: 5px;
   border-radius: 10px;
+  margin: 5px;
 }
 
 .main-content-right {
   text-align: center;
   background: rgba(255, 255, 255, 0.5);
   padding: 5px;
+  margin: 5px;
   border-radius: 10px;
 }
 
@@ -170,4 +172,5 @@ input {
   align-items: center;
   background-color: var(--maincolor);
   padding: 10px;
+  
 }

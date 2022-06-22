@@ -1,13 +1,20 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Icon } from "@iconify/react";
+import moment from "moment";
 
-const Results = ({ weatherData }) => {
+const Results = ({ weatherData, city }) => {
+  var cityName = city
+    .toLowerCase()
+    .split(" ")
+    .map((s) => s.charAt(0).toUpperCase() + s.substring(1))
+    .join(" ");
+
   return (
     <div className="results-container">
       <div className="main-results-container">
         <div className="main-header-container">
           <div className="main-header-left">
-            <h2>name here</h2>
+            <h2>{cityName}</h2>
           </div>
           <div className="main-header-right">
             <Icon icon="akar-icons:star" className="icon default-icon" />
@@ -25,12 +32,27 @@ const Results = ({ weatherData }) => {
             <p>{weatherData.current.weather[0].description}</p>
           </div>
           <div className="main-content-right">
+            <p>
+              <b>{moment().format("MM/DD/YYYY")}</b>
+            </p>
             <p>Feels Like: {weatherData.current.feels_like} °F</p>
             <p>Humidity: {weatherData.current.humidity} %</p>
             <p>Clouds: {weatherData.current.clouds}</p>
             <p>Dew Point: {weatherData.current.dew_point}</p>
             <p>Wind Speed: {weatherData.current.wind_speed} MPH</p>
             <p>UVI: {weatherData.current.uvi}</p>
+            <p>
+              Sunrise:{" "}
+              {new Date(weatherData.current.sunrise * 1000).toLocaleTimeString(
+                "en-IN"
+              )}
+            </p>
+            <p>
+              Sunset:{" "}
+              {new Date(weatherData.current.sunset * 1000).toLocaleTimeString(
+                "en-IN"
+              )}
+            </p>
           </div>
         </div>
       </div>
