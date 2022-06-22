@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Icon } from "@iconify/react";
 import moment from "moment";
 
+import Forecast from "../Forecast";
+
 const Results = ({ weatherData, city }) => {
   const [image, setImage] = useState("");
 
@@ -12,14 +14,14 @@ const Results = ({ weatherData, city }) => {
     .join(" ");
 
   var str = city;
-    str = str.replace(/\s+/g, "-").toLowerCase();
+  str = str.replace(/\s+/g, "-").toLowerCase();
 
   const cityImageUrl =
     "https://api.teleport.org/api/urban_areas/slug:" + str + "/images/";
 
   var mainDivStyle = {
-    backgroundImage: "url(" + image + ")"
-  }
+    backgroundImage: "url(" + image + ")",
+  };
 
   useEffect(() => {
     const fetchImage = async () => {
@@ -57,7 +59,7 @@ const Results = ({ weatherData, city }) => {
           </div>
           <div className="main-content-right">
             <p>
-              <b>{moment().format("MM/DD/YYYY")}</b>
+              <b>{moment().format("ddd, MM/DD/YYYY")}</b>
             </p>
             <p>Feels Like: {weatherData.current.feels_like} °F</p>
             <p>Humidity: {weatherData.current.humidity} %</p>
@@ -81,7 +83,9 @@ const Results = ({ weatherData, city }) => {
         </div>
       </div>
       <div className="forecast-results-container">
-        forecast results will go here
+        {weatherData.daily.map((dailyData, index) => {
+          return <Forecast key={index} {...dailyData} />;
+        })}
       </div>
       <div className="details-results-container">details will go here</div>
     </div>
