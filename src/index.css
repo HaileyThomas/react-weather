@@ -175,6 +175,21 @@ input {
   overflow-x: auto;
 }
 
+.forecast-results-container::-webkit-scrollbar {
+  width: 20px;
+}
+
+.forecast-results-container::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+.forecast-results-container::-webkit-scrollbar-thumb {
+  background-color: var(--maincolor);
+  border-radius: 20px;
+  border: 6px solid transparent;
+  background-clip: content-box;
+}
+
 .forecast-container {
   background-color: var(--maincolor);
   border-radius: 10px;
@@ -188,6 +203,45 @@ input {
   background: rgba(255, 255, 255, 0.5);
   border-radius: 10px;
   margin: 5px;
+}
+
+.hourly-results-container {
+  background-color: var(--maincolor);
+  border-radius: 10px;
+  padding: 10px;
+  margin-top: 10px;
+}
+
+.hourly-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hourly-icon {
+  max-width: 80px;
+}
+
+.hourly-left-container {
+  text-align: center;
+  background: rgba(255, 255, 255, 0.6);
+  padding: 10px;
+  margin: 10px;
+  border-radius: 10px;
+}
+
+.hourly-right-container {
+  background: rgba(255, 255, 255, 0.6);
+  padding: 10px;
+  margin: 10px;
+  border-radius: 10px;
+}
+
+hr {
+  width: 75%;
+  margin: auto;
+  border-top: 3px solid var(--colorone);
+  border-radius: 10px;
 }
 
 .footer-container {

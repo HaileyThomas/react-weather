@@ -3,6 +3,7 @@ import { Icon } from "@iconify/react";
 import moment from "moment";
 
 import Forecast from "../Forecast";
+import Hourly from "../Hourly";
 
 const Results = ({ weatherData, city }) => {
   const [image, setImage] = useState("");
@@ -63,10 +64,10 @@ const Results = ({ weatherData, city }) => {
             </p>
             <p>Feels Like: {weatherData.current.feels_like} °F</p>
             <p>Humidity: {weatherData.current.humidity} %</p>
-            <p>Clouds: {weatherData.current.clouds}</p>
-            <p>Dew Point: {weatherData.current.dew_point}</p>
+            <p>Clouds: {weatherData.current.clouds} %</p>
+            <p>Dew Point: {weatherData.current.dew_point} °F</p>
             <p>Wind Speed: {weatherData.current.wind_speed} MPH</p>
-            <p>UVI: {weatherData.current.uvi}</p>
+            <p>UVI: {weatherData.current.uvi} of 10</p>
             <p>
               Sunrise:{" "}
               {new Date(weatherData.current.sunrise * 1000).toLocaleTimeString(
@@ -87,7 +88,12 @@ const Results = ({ weatherData, city }) => {
           return <Forecast key={index} {...dailyData} />;
         })}
       </div>
-      <div className="details-results-container">details will go here</div>
+      <div className="hourly-results-container">
+        <h2>Hourly Forecast</h2>
+        {weatherData.hourly.map((hourlyData, index) => {
+          return <Hourly key={index} {...hourlyData} />;
+        })}
+      </div>
     </div>
   );
 };
