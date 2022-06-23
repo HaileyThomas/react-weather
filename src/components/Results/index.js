@@ -48,15 +48,41 @@ const Results = ({ weatherData, city }) => {
   };
 
   useEffect(() => {
-    const fetchImage = async () => {
-      await fetch(cityImageUrl)
-        .then((res) => res.json())
-        .then((result) => {
-          setImage(result.photos[0].image.web);
-        });
+    const getImage = () => {
+      if (weatherData.current.weather[0].main === "Thunderstorm") {
+        setImage(thunderstormImg);
+      } else if (weatherData.current.weather[0].main === "Drizzle") {
+        setImage(drizzleImg);
+      } else if (weatherData.current.weather[0].main === "Rain") {
+        setImage(rainImg);
+      } else if (weatherData.current.weather[0].main === "Snow") {
+        setImage(snowImg);
+      } else if (weatherData.current.weather[0].main === "Clear") {
+        setImage(clearImg);
+      } else if (weatherData.current.weather[0].main === "Clouds") {
+        setImage(cloudsImg);
+      } else if (weatherData.current.weather[0].main === "Mist") {
+        setImage(mistImg);
+      } else if (weatherData.current.weather[0].main === "Smoke") {
+        setImage(smokeImg);
+      } else if (weatherData.current.weather[0].main === "Haze") {
+        setImage(hazeImg);
+      } else if (weatherData.current.weather[0].main === "Dust") {
+        setImage(dustImg);
+      } else if (weatherData.current.weather[0].main === "Fog") {
+        setImage(fogImg);
+      } else if (weatherData.current.weather[0].main === "Sand") {
+        setImage(sandImg);
+      } else if (weatherData.current.weather[0].main === "Ash") {
+        setImage(ashImg);
+      } else if (weatherData.current.weather[0].main === "Squall") {
+        setImage(squallImg);
+      } else if (weatherData.current.weather[0].main === "Tornado") {
+        setImage(tornadoImg);
+      }
     };
-    fetchImage();
-  }, [city]);
+    getImage();
+  }, [city, weatherData, image]);
 
   return (
     <div className="results-container">
