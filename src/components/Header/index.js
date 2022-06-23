@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { Icon } from "@iconify/react";
 
+import Info from "../Info";
+
 const Header = ({ theme, setTheme }) => {
+  const [showInfo, setShowInfo] = useState(false);
+
   const switchTheme = () => {
     const newTheme = theme === "light" ? "dark" : "light";
     setTheme(newTheme);
@@ -21,8 +25,13 @@ const Header = ({ theme, setTheme }) => {
             <Icon icon="charm:sun" className="light-icon icon" />
           )}
         </button>
-        <Icon icon="dashicons:info-outline" className="about-icon icon" />
+        <Icon
+          icon="dashicons:info-outline"
+          className="about-icon icon"
+          onClick={() => setShowInfo(true)}
+        />
       </div>
+      <Info onClose={() => setShowInfo(false)} showInfo={showInfo} />
     </div>
   );
 };
