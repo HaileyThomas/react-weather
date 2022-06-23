@@ -60,9 +60,9 @@ function App() {
 
   return (
     <div className="App" data-theme={theme}>
-      <Header theme={theme} setTheme={setTheme} />
+      <Header theme={theme} setTheme={setTheme} setCity={setCity} />
       <div className="app-container">
-        <div className="side-container">
+        <div className="side-container desktop-content">
           <Saved setCity={setCity} />
         </div>
         <div className="main-container">
