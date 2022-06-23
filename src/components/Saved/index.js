@@ -8,14 +8,26 @@ const Saved = ({ setCity }) => {
     <div className="saved-container">
       <h3>Saved Locations</h3>
       {savedCities.map((savedData, index) => {
-        var savedDivStyle = {
-          backgroundImage: "url(" + savedData.image + ")",
+        const handleSaveClick = () => {
+          setCity(savedData.name);
+        };
+
+        const handleSaveClose = () => {
+          console.log("un save will go here");
         };
 
         return (
-          <div style={savedDivStyle} className="saved-container" key={index}>
+          <div
+            className="saved-container"
+            key={index}
+            onClick={handleSaveClick}
+          >
             <div className="saved-header-container">
-              <Icon icon="ep:close-bold" className="close-icon" />
+              <Icon
+                icon="ep:close-bold"
+                className="close-icon"
+                onClick={handleSaveClose}
+              />
             </div>
             <div className="saved-name-container">
               <h4>{savedData.name}</h4>

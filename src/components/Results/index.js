@@ -32,7 +32,6 @@ const Results = ({ weatherData, city }) => {
     var existingSaved = JSON.parse(localStorage.getItem("saved-cities")) || [];
     var newSave = {
       name: city,
-      image: cityImageUrl,
     };
     existingSaved.push(newSave);
     localStorage.setItem("saved-cities", JSON.stringify(existingSaved));
