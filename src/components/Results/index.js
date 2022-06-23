@@ -45,6 +45,11 @@ const Results = ({ weatherData, city }) => {
     };
     existingSaved.push(newSave);
     localStorage.setItem("saved-cities", JSON.stringify(existingSaved));
+    reloadComponent();
+  };
+
+  const reloadComponent = () => {
+    window.location.reload(false);
   };
 
   useEffect(() => {

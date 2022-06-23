@@ -8,20 +8,22 @@ const Saved = ({ setCity }) => {
     <div className="saved-container">
       <h3>Saved Locations</h3>
       {savedCities.map((savedData, index) => {
+        const reloadComponent = () => {
+          window.location.reload(false);
+        };
+
         const handleSaveClick = () => {
           setCity(savedData.name);
         };
 
         const handleSaveClose = () => {
-          console.log("un save will go here");
+          savedCities.splice(index, 1);
+          localStorage.setItem("saved-cities", JSON.stringify(savedCities));
+          reloadComponent();
         };
 
         return (
-          <div
-            className="saved-container"
-            key={index}
-            onClick={handleSaveClick}
-          >
+          <div className="saved-content-container" key={index}>
             <div className="saved-header-container">
               <Icon
                 icon="ep:close-bold"
@@ -30,7 +32,9 @@ const Saved = ({ setCity }) => {
               />
             </div>
             <div className="saved-name-container">
-              <h4>{savedData.name}</h4>
+              <h3 className="saved-name" onClick={handleSaveClick}>
+                {savedData.name}
+              </h3>
             </div>
           </div>
         );
