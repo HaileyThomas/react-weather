@@ -28,6 +28,16 @@ const Results = ({ weatherData, city }) => {
     localStorage.setItem("default-city", JSON.stringify(city));
   };
 
+  const handleSaved = () => {
+    var existingSaved = JSON.parse(localStorage.getItem("saved-cities")) || [];
+    var newSave = {
+      name: city,
+      image: cityImageUrl,
+    };
+    existingSaved.push(newSave);
+    localStorage.setItem("saved-cities", JSON.stringify(existingSaved));
+  };
+
   useEffect(() => {
     const fetchImage = async () => {
       await fetch(cityImageUrl)
@@ -52,7 +62,11 @@ const Results = ({ weatherData, city }) => {
               className="icon default-icon"
               onClick={handleDefault}
             />
-            <Icon icon="bi:bookmark-heart" className="icon save-icon" />
+            <Icon
+              icon="bi:bookmark-heart"
+              className="icon save-icon"
+              onClick={handleSaved}
+            />
           </div>
         </div>
         <div className="main-content-container">

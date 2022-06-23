@@ -63,7 +63,7 @@ function App() {
       <Header theme={theme} setTheme={setTheme} />
       <div className="app-container">
         <div className="side-container">
-          <Saved />
+          <Saved setCity={setCity} />
         </div>
         <div className="main-container">
           <Search city={city} setCity={setCity} />
