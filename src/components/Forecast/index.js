@@ -10,6 +10,7 @@ const Forecast = (dailyData) => {
           dailyData.weather[0].icon +
           ".png")}
         className="forecast-icon"
+        alt="forecast icon"
       />
       <h3>{dailyData.temp.day}°F</h3>
     </div>

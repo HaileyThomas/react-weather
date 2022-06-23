@@ -115,6 +115,7 @@ const Results = ({ weatherData, city }) => {
               src={require("../../assets/icons/" +
                 weatherData.current.weather[0].icon +
                 ".png")}
+              alt="current icon"
             />
             <h1>{weatherData.current.temp} °F</h1>
             <p>{weatherData.current.weather[0].description}</p>

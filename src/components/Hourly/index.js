@@ -12,6 +12,7 @@ const Hourly = (hourlyData) => {
               hourlyData.weather[0].icon +
               ".png")}
             className="hourly-icon"
+            alt="hourly icon"
           />
           <h2>{hourlyData.temp}°F</h2>
         </div>
