@@ -16,7 +16,7 @@ function App() {
   const [data, setData] = useState([]);
 
   const cityApiUrl =
-    "http://api.openweathermap.org/geo/1.0/direct?q=" +
+    "https://api.openweathermap.org/geo/1.0/direct?q=" +
     city +
     "&limit=1&appid=" +
     "6ff484b66ed5b4a802761c069566a64c";
