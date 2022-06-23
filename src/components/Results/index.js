@@ -5,6 +5,22 @@ import moment from "moment";
 import Forecast from "../Forecast";
 import Hourly from "../Hourly";
 
+import thunderstormImg from "../../assets/images/thunderstorm.png";
+import drizzleImg from "../../assets/images/drizzle.png";
+import rainImg from "../../assets/images/rain.png";
+import snowImg from "../../assets/images/snow.png";
+import clearImg from "../../assets/images/clear.png";
+import cloudsImg from "../../assets/images/clouds.png";
+import mistImg from "../../assets/images/mist.png";
+import smokeImg from "../../assets/images/smoke.png";
+import hazeImg from "../../assets/images/haze.png";
+import dustImg from "../../assets/images/dust.png";
+import fogImg from "../../assets/images/fog.png";
+import sandImg from "../../assets/images/sand.png";
+import ashImg from "../../assets/images/ash.png";
+import squallImg from "../../assets/images/squall.png";
+import tornadoImg from "../../assets/images/tornado.png";
+
 const Results = ({ weatherData, city }) => {
   const [image, setImage] = useState("");
 
@@ -13,12 +29,6 @@ const Results = ({ weatherData, city }) => {
     .split(" ")
     .map((s) => s.charAt(0).toUpperCase() + s.substring(1))
     .join(" ");
-
-  var str = city;
-  str = str.replace(/\s+/g, "-").toLowerCase();
-
-  const cityImageUrl =
-    "https://api.teleport.org/api/urban_areas/slug:" + str + "/images/";
 
   var mainDivStyle = {
     backgroundImage: "url(" + image + ")",
