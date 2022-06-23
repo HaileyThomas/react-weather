@@ -24,6 +24,10 @@ const Results = ({ weatherData, city }) => {
     backgroundImage: "url(" + image + ")",
   };
 
+  const handleDefault = () => {
+    localStorage.setItem("default-city", JSON.stringify(city));
+  };
+
   useEffect(() => {
     const fetchImage = async () => {
       await fetch(cityImageUrl)
@@ -43,7 +47,11 @@ const Results = ({ weatherData, city }) => {
             <h2>{cityName}</h2>
           </div>
           <div className="main-header-right">
-            <Icon icon="akar-icons:star" className="icon default-icon" />
+            <Icon
+              icon="akar-icons:star"
+              className="icon default-icon"
+              onClick={handleDefault}
+            />
             <Icon icon="bi:bookmark-heart" className="icon save-icon" />
           </div>
         </div>

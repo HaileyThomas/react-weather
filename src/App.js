@@ -8,7 +8,9 @@ import Search from "./components/Search";
 import Results from "./components/Results";
 
 function App() {
-  const [city, setCity] = useState("New York");
+  const [city, setCity] = useState(
+    JSON.parse(localStorage.getItem("default-city")) || "New York"
+  );
   const [lat, setLat] = useState([]);
   const [long, setLong] = useState([]);
   const [data, setData] = useState([]);
