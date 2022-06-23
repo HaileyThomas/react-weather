@@ -30,11 +30,10 @@ const Results = ({ weatherData, city }) => {
         .then((res) => res.json())
         .then((result) => {
           setImage(result.photos[0].image.web);
-          console.log(image);
         });
     };
     fetchImage();
-  }, [image]);
+  }, [city]);
 
   return (
     <div className="results-container">

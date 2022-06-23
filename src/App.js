@@ -51,11 +51,10 @@ function App() {
         .then((res) => res.json())
         .then((result) => {
           setData(result);
-          console.log(result);
         });
     };
     fetchData();
-  }, [lat, long]);
+  }, [city, lat, long]);
 
   return (
     <div className="App" data-theme={theme}>
